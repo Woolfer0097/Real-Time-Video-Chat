@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+/* Color system based on provided palette */
+:root {
+  /* App background and text */
+  --background: #1a1a1a; /* Primary Background */
+  --foreground: #ffffff; /* Light Text */
+
+  /* Additional semantic tokens */
+  --card: #262626; /* Card Background */
+  --muted: #cccccc; /* Muted Text */
+
+  /* Accents */
+  --orange: #ffa047; /* Primary Orange */
+  --light-orange: #ffb347; /* Light Orange */
+  --coral: #ff6f61;  /* Coral */
+  --blue: #4facfe;   /* Soft Blue */
+  --purple: #6a7ff5; /* Soft Purple */
+
+  /* Gradients */
+  --gradient-orange-light: linear-gradient(to right, #ffa047, #ffb347);
+  --gradient-orange-coral: linear-gradient(to right, #ffa047, #ff6f61);
+  --gradient-blue-purple: linear-gradient(to right, #4facfe, #6a7ff5);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-muted: var(--muted);
+
+  --color-orange: var(--orange);
+  --color-light-orange: var(--light-orange);
+  --color-coral: var(--coral);
+  --color-blue: var(--blue);
+  --color-purple: var(--purple);
+
+  --gradient-orange-light: var(--gradient-orange-light);
+  --gradient-orange-coral: var(--gradient-orange-coral);
+  --gradient-blue-purple: var(--gradient-blue-purple);
+
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-fraunces);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+/* Typography */
+.font-heading {
+  font-family: var(--font-fraunces), system-ui, sans-serif;
+  font-weight: 800;
+}
+
+.font-body {
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+/* Chip styles (single and multi-select) */
+.chip {
+  @apply inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-medium transition-colors border;
+  @apply border-white/10 text-[--color-foreground] bg-transparent hover:bg-white/5;
+}
+
+.chip-selected {
+  background-image: linear-gradient(to right, var(--orange), var(--coral));
+  color: #1a1a1a;
+  border-color: transparent;
+}
+
+/* Inputs */
+.input {
+  @apply w-full rounded-lg bg-[--color-card] border border-white/10 px-4 py-2 text-base text-[--color-foreground] placeholder-[--color-muted] focus:outline-none focus:ring-2;
+  @apply focus:ring-[--orange];
+}
+
+.button-primary {
+  background-image: linear-gradient(to right, var(--blue), var(--purple));
+  @apply text-white font-semibold rounded-lg px-5 py-2.5 shadow-md shadow-black/30 hover:opacity-95 transition;
+}
+
+/* Language flag switcher */
+.flag-switcher {
+  @apply relative w-[88px] h-[56px];
+}
+
+.flag-card {
+  @apply absolute inset-0 overflow-hidden rounded-md border border-white/15 shadow-lg shadow-black/30 bg-[--color-card] transition-transform duration-500 ease-out will-change-transform;
+}
+
+.flag-card img {
+  @apply w-full h-full object-cover;
+}
+
+.flag-active {
+  @apply z-10 translate-x-0 translate-y-0 scale-[0.40];
+}
+
+.flag-inactive {
+  @apply z-0 translate-x-3 -translate-y-3 scale-[0.36];
+}
+
+.rotate-swap {
+  animation: 600ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Gradient utility classes */
+.gradient-orange-light {
+  background: var(--gradient-orange-light);
+}
+
+.gradient-orange-coral {
+  background: var(--gradient-orange-coral);
+}
+
+.gradient-blue-purple {
+  background: var(--gradient-blue-purple);
+}
+
+/* Gradient text utilities */
+.gradient-text-orange-light {
+  background: var(--gradient-orange-light);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-orange-coral {
+  background: var(--gradient-orange-coral);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-blue-purple {
+  background: var(--gradient-blue-purple);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
